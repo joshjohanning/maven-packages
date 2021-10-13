@@ -8,5 +8,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: mvn deploy
-        run: mvn deploy
+      - name: mvn install
+        run: mvn install
