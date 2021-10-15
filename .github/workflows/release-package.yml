@@ -8,7 +8,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Sign into GH packaes 
-        run: dotnet nuget add source --username begonaguereca --password ${{ secrets.GITHUB_SECRET }} --store-password-in-clear-text --name github "https://nuget.pkg.github.com/begonaguereca/index.json"
+
       - name: mvn install
         run: mvn install
