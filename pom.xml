@@ -17,30 +17,6 @@
     <maven.compiler.source>1.7</maven.compiler.source>
     <maven.compiler.target>1.7</maven.compiler.target>
   </properties>
-  
-
-  <profiles>
-    <profile>
-      <id>github</id>
-      <repositories>
-        <repository>
-          <id>central</id>
-          <url>https://maven.pkg.github.com/begonaguereca/maven-packages</url>
-          <snapshots>
-            <enabled>true</enabled>
-          </snapshots>
-        </repository>
-      </repositories>
-    </profile>
-  </profiles>
-  
-   <servers>
-    <server>
-      <id>github</id>
-      <username>begonaguereca</username>
-      <password>secrets.GITHUB_TOKEN</password>
-    </server>
-  </servers>
 
 
 <dependencies>
