@@ -20,7 +20,7 @@ jobs:
         uses: whelk-io/maven-settings-xml-action@v20
         with:
           repositories: '[{ "id": "begonaguereca", "url": https://github.com/begonaguereca/maven-packages" }]'
-          servers: '[{ "id": "begonaguereca", "username": "begonaguereca", "password": $GITHUB_PAT }} }]'
+          servers: '[{ "id": "begonaguereca", "username": "begonaguereca", "password": "${secrets.GITHUB_TOKEN}" }} }]'
 
       - name: Install with Maven
         run: mvn install -s ~/.m2/settings.xml 
