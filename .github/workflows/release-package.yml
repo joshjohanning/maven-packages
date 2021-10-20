@@ -27,9 +27,9 @@ jobs:
           servers: '[{ "id": "github", "username": "begonaguereca", "password": "${secrets.GITHUB_TOKEN}" }]'
           
       - name: View settings.xml
-        run: cat ~/.m2/settings.xml
+        run: cat ~/.m2/settings.xml 
       
       - name: Install with Maven
-        run: mvn install
+        run: mvn install -s ~/.m2/settings.xml 
         env:
           GITHUB_TOKEN: ${secrets.GITHUB_TOKEN}
