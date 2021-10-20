@@ -15,11 +15,12 @@ jobs:
           distribution: 'adopt'
           server-id: github # Value of the distributionManagement/repository/id field of the pom.xml
           settings-path: ${{ github.workspace }} # location for the settings.xml file
+  
       - name: maven-settings-xml-action
         uses: whelk-io/maven-settings-xml-action@v20
         with:
           repositories: '[{ "id": "begonaguereca", "url": https://github.com/begonaguereca/maven-packages" }]'
-          servers: '[{ "id": "begonaguereca", "username": "begonaguereca", "password": ${{ secrets.GITHUB_TOKEN }} }]'
+          servers: '[{ "id": "begonaguereca", "username": "begonaguereca", "password": $GITHUB_PAT }} }]'
 
       - name: Install with Maven
         run: mvn install -s ~/.m2/settings.xml 
