@@ -23,8 +23,8 @@ jobs:
       - name: maven-settings-xml-action
         uses: whelk-io/maven-settings-xml-action@v20
         with:
-          repositories: '[{ "id": "github", "url": "https://maven.pkg.github.com/begonaguereca/maven-packages", "snapshots": { "enabled": "false" } }]'
-          servers: '[{ "id": "github", "username": "begonaguereca", "password": "${env.pass}" }]'
+          repositories: '[{ "id": "github", "url": "https://maven.pkg.github.com/begonaguereca/maven-packages", "snapshots": { "enabled": "true" } }]'
+          servers: '[{ "id": "github", "username": "begonaguereca", "password": "${secrets.GITHUB_TOKEN}" }]'
           
       - name: View settings.xml
         run: cat ~/.m2/settings.xml
