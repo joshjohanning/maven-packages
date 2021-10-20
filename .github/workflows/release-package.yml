@@ -32,4 +32,4 @@ jobs:
       - name: Install with Maven
         run: mvn install -s ~/.m2/settings.xml 
         env:
-          GITHUB_TOKEN: $GITHUB_PAT
+          GITHUB_TOKEN: ${secrets.GITHUB_TOKEN}
