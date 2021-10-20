@@ -15,5 +15,16 @@ jobs:
           distribution: 'adopt'
           server-id: github # Value of the distributionManagement/repository/id field of the pom.xml
           settings-path: ${{ github.workspace }} # location for the settings.xml file
-      - name: mvn install
-        run: mvn install
+      - name: Create settings.xml
+        run: |
+              touch ~/.m2/settings.xml
+              echo '<settings><activeProfiles><activeProfile>github</activeProfile></activeProfiles><profiles><profile><id>github</id><repositories><repository><id>github</id><url>https://maven.pkg.github.com/begonaguereca/maven-packages/</url><snapshots><enabled>true</enabled></snapshots></repository></repositories></profile></profiles><servers><server><id>github</id><username>${{ secrets.USERNAME }}</username><password>${{ secrets.GITHUB_TOKEN }}</password></server></servers></settings>' > ~/.m2/settings.xml
+
+      - name: View settings.xml
+        run: cat ~/.m2/settings.xml
+
+
+      - name: Install with Maven
+        run: mvn install -s ~/.m2/settings.xml 
+        env:
+          GITHUB_TOKEN: $GITHUB_PAT
