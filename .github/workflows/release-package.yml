@@ -23,5 +23,3 @@ jobs:
       
       - name: Install with Maven
         run: mvn install -s ~/.m2/settings.xml 
-        env:
-          GITHUB_TOKEN: ${{ secrets.PAT }}
