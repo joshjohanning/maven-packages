@@ -19,13 +19,11 @@ jobs:
           server-id: github # Value of the distributionManagement/repository/id field of the pom.xml
           settings-path: ${{ github.workspace }} # location for the settings.xml file
           
+      - name: Create settings.xml
+        run: |
+          touch ~/.m2/settings.xml
+          echo '<settings><activeProfiles><activeProfile>github</activeProfile></activeProfiles><profiles><profile><id>github</id><repositories><repository><id>github</id><url>https://maven.pkg.github.com/begonaguereca/maven-packages/</url><snapshots><enabled>true</enabled></snapshots></repository></repositories></profile></profiles><servers><server><id>github</id><username>begonaguereca</username><password>${{ secrets.PAT }}</password></server></servers></settings>' > ~/.m2/settings.xml
 
-      - name: maven-settings-xml-action
-        uses: whelk-io/maven-settings-xml-action@v20
-        with:
-          repositories: '[{ "id": "github", "url": "https://maven.pkg.github.com/begonaguereca/maven-packages", "snapshots": { "enabled": "true" } }]'
-          servers: '[{ "id": "github", "username": "begonaguereca", "password": "${{ secrets.PAT }}" }]'
-          
       - name: View settings.xml
         run: cat ~/.m2/settings.xml 
       
