@@ -22,4 +22,7 @@ jobs:
         run: cat ~/.m2/settings.xml 
       
       - name: Install with Maven
-        run: mvn install -s ~/.m2/settings.xml 
+        run: mvn install -s ~/.m2/settings.xml -Ddir=downloaddir
+        
+      - name: ls
+        run: ls -a downloaddir
